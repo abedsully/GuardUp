@@ -7,28 +7,28 @@ struct StoryCategoryView: View {
     
     var body: some View {
         VStack {
-            HStack(alignment: .top, spacing: 24) {
-                
-                Spacer()
-                
+            HStack(alignment: .top, spacing: 16) {
                 Image(imageUrl)
                     .resizable()
-                    .scaledToFill()
-                    .frame(width: 120, height: 120)
+                    .scaledToFit()
+                    .frame(height: 120)
                 
-                VStack(alignment: .leading, spacing: 24) {
+                VStack(alignment: .leading, spacing: 16) {
                     Text(categoryTitle)
                         .font(.largeTitle)
                         .fontWeight(.semibold)
                     Text(categoryDescription)
-                        .font(.callout)
+                        .font(.title3)
                         .multilineTextAlignment(.leading)
                 }
-                
-                Spacer()
+                .frame(maxWidth: .infinity)
             }
+            .padding(16)
+            .background(Color.white)
+            .cornerRadius(8)
+
         }
-        .padding(24)
+        .padding(8)
         .foregroundStyle(.black)
     }
 }

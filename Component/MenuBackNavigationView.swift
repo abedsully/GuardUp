@@ -10,8 +10,8 @@ struct MenuBackNavigationView: View {
                     .resizable()
                     .padding(16)
                     .frame(width: 72, height: 72)
-                    .foregroundStyle(.white)
-                    .background(Color.yellow)
+                    .foregroundStyle(.black)
+                    .background(Color.white)
                     .clipShape(Circle())
 
             }
