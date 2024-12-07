@@ -6,20 +6,29 @@ struct StoryCategoryView: View {
     var categoryDescription: String;
     
     var body: some View {
-        HStack(alignment: .top, spacing: 24) {
-            Image(imageUrl)
-                .resizable()
-                .scaledToFill()
-                .frame(width: 120, height: 120)
-            
-            VStack(alignment: .leading, spacing: 24) {
-                Text(categoryTitle)
-                    .font(.largeTitle)
-                    .fontWeight(.semibold)
-                Text(categoryDescription)
-                    .font(.callout)
-            } 
+        VStack {
+            HStack(alignment: .top, spacing: 24) {
+                
+                Spacer()
+                
+                Image(imageUrl)
+                    .resizable()
+                    .scaledToFill()
+                    .frame(width: 120, height: 120)
+                
+                VStack(alignment: .leading, spacing: 24) {
+                    Text(categoryTitle)
+                        .font(.largeTitle)
+                        .fontWeight(.semibold)
+                    Text(categoryDescription)
+                        .font(.callout)
+                        .multilineTextAlignment(.leading)
+                }
+                
+                Spacer()
+            }
         }
-        .padding(.vertical, 24)
+        .padding(24)
+        .foregroundStyle(.black)
     }
 }

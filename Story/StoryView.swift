@@ -3,16 +3,57 @@ import SwiftUI
 struct StoryView: View {
     var body: some View {
         NavigationView {
-            VStack {
-                StoryCategoryView(imageUrl: "compliment-logo", categoryTitle: "Giving Compliments", categoryDescription: "Learn how simple, kind words can brighten someone’s day and build stronger connections with others.")
+            ZStack {
+                Image("story-background")
+                    .resizable()
+                    .scaledToFill()
+                    .ignoresSafeArea()
+                    .frame(height: .infinity)
                 
-                StoryCategoryView(imageUrl: "compliment-logo", categoryTitle: "Giving Compliments", categoryDescription: "Learn how simple, kind words can brighten someone’s day and build stronger connections with others.")
+                Color.black
+                    .ignoresSafeArea()
+                    .opacity(0.6)
                 
-                StoryCategoryView(imageUrl: "compliment-logo", categoryTitle: "Giving Compliments", categoryDescription: "Learn how simple, kind words can brighten someone’s day and build stronger connections with others.")
+                VStack (alignment: .center, spacing: 36){
+                    Spacer()
+                    
+                    NavigationLink {
+                        ComplimentView()
+                    } label: {
+                        StoryCategoryView(imageUrl: "compliment-logo", categoryTitle: "Giving Compliments", categoryDescription: "Learn how simple, kind words can brighten someone’s day and build stronger connections with others.")
+                    }
+                    
+                    NavigationLink {
+                        ComplimentView()
+                    } label: {
+                        StoryCategoryView(imageUrl: "compliment-logo", categoryTitle: "Giving Compliments", categoryDescription: "Learn how simple, kind words can brighten someone’s day and build stronger connections with others.")
+                    }
+                    
+                    NavigationLink {
+                        ComplimentView()
+                    } label: {
+                        StoryCategoryView(imageUrl: "compliment-logo", categoryTitle: "Giving Compliments", categoryDescription: "Learn how simple, kind words can brighten someone’s day and build stronger connections with others.")
+                    }
+                    
+                    NavigationLink {
+                        ComplimentView()
+                    } label: {
+                        StoryCategoryView(imageUrl: "compliment-logo", categoryTitle: "Giving Compliments", categoryDescription: "Learn how simple, kind words can brighten someone’s day and build stronger connections with others.")
+                    }
+                    
+                    VStack {
+                        NavigationLink {
+                            MenuView()
+                        } label: {
+                            MenuBackNavigationView()
+                        }
+                    }
+                    
+                    Spacer()
+                }
             }
-            .padding(24)
         }
         .navigationViewStyle(.stack)
-        .navigationBarBackButtonHidden()
+        .navigationBarBackButtonHidden(true)
     }
 }

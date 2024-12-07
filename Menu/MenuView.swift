@@ -8,6 +8,7 @@ struct MenuView: View {
                 Image("menu-background")
                     .resizable()
                     .scaledToFill()
+                    .ignoresSafeArea()
                     .frame(height: .infinity)
                 
                 Color.black
@@ -20,7 +21,7 @@ struct MenuView: View {
                     Image("logo")
                         .resizable()
                         .scaledToFit()
-                        .frame(height: UIScreen.main.bounds.height * 0.4)
+                        .frame(height: UIScreen.main.bounds.height * 0.35)
                     
                     Spacer()
                     

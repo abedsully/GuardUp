@@ -2,6 +2,20 @@ import SwiftUI
 
 struct MenuBackNavigationView: View {
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack {
+            NavigationLink {
+                MenuView()
+            } label: {
+                Image(systemName: "house")
+                    .resizable()
+                    .padding(16)
+                    .frame(width: 72, height: 72)
+                    .foregroundStyle(.white)
+                    .background(Color.yellow)
+                    .clipShape(Circle())
+
+            }
+        }
+        .padding(.vertical, 36)
     }
 }
