@@ -5,8 +5,9 @@ struct MenuView: View {
     var body: some View {
         NavigationView {
             ZStack {
-                Image("bg3")
+                Image("menu-background")
                     .resizable()
+                    .scaledToFill()
                     .frame(height: .infinity)
                 
                 Color.black
@@ -16,7 +17,7 @@ struct MenuView: View {
                 VStack (alignment: .center, spacing: 16){
                     Spacer()
                     
-                    Image("logo-2")
+                    Image("logo")
                         .resizable()
                         .scaledToFit()
                         .frame(height: UIScreen.main.bounds.height * 0.4)
