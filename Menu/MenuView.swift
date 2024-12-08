@@ -9,7 +9,6 @@ struct MenuView: View {
                     .resizable()
                     .scaledToFill()
                     .ignoresSafeArea()
-                    .frame(height: .infinity)
                 
                 Color.black
                     .ignoresSafeArea()
@@ -26,48 +25,48 @@ struct MenuView: View {
                     Spacer()
                     
                     VStack (alignment: .center, spacing: 40){
-                        NavigationLink { 
+                        NavigationLink {
                             StoryView()
-                        } label: { 
+                        } label: {
                             Image("story-button")
                                 .resizable()
                                 .scaledToFit()
-                                .frame(width: .infinity, height: UIScreen.main.bounds.height * 0.1)
+                                .frame(height: UIScreen.main.bounds.height * 0.1)
                             
                             
                         }
-                                             
-                        NavigationLink { 
+                        
+                        NavigationLink {
                             StoryView()
-                        } label: { 
+                        } label: {
                             Image("quiz-button")
                                 .resizable()
                                 .scaledToFit()
-                                .frame(width: .infinity, height: UIScreen.main.bounds.height * 0.1)
+                                .frame(height: UIScreen.main.bounds.height * 0.1)
                             
                             
                         }
                         
                         
-                        NavigationLink { 
+                        NavigationLink {
                             StoryView()
-                        } label: { 
+                        } label: {
                             Image("story-button")
                                 .resizable()
                                 .scaledToFit()
-                                .frame(width: .infinity, height: UIScreen.main.bounds.height * 0.1)
+                                .frame(height: UIScreen.main.bounds.height * 0.1)
                             
                             
                         }
                         
                         
-                        NavigationLink { 
+                        NavigationLink {
                             StoryView()
-                        } label: { 
+                        } label: {
                             Image("story-button")
                                 .resizable()
                                 .scaledToFit()
-                                .frame(width: .infinity, height: UIScreen.main.bounds.height * 0.1)
+                                .frame(height: UIScreen.main.bounds.height * 0.1)
                             
                             
                         }
@@ -78,6 +77,6 @@ struct MenuView: View {
         }
         .navigationViewStyle(.stack)
         .navigationBarBackButtonHidden(true)
-
+        
     }
 }

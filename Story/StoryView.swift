@@ -8,7 +8,6 @@ struct StoryView: View {
                     .resizable()
                     .scaledToFill()
                     .ignoresSafeArea()
-                    .frame(height: .infinity)
                 
                 Color.black
                     .ignoresSafeArea()
@@ -25,7 +24,7 @@ struct StoryView: View {
                     
                     VStack (alignment: .center, spacing: 8) {
                         NavigationLink {
-                            ComplimentView()
+                            GivingComplimentsView()
                         } label: {
                             StoryCategoryView(imageUrl: "compliment-logo", categoryTitle: "Giving Compliments", categoryDescription: "Learn how simple, kind words can brighten someone’s day and build stronger connections with others.")
                                 .frame(maxWidth: .infinity)
@@ -33,7 +32,7 @@ struct StoryView: View {
                         }
                         
                         NavigationLink {
-                            ComplimentView()
+                            GivingComplimentsView()
                         } label: {
                             StoryCategoryView(imageUrl: "compliment-logo", categoryTitle: "Giving Compliments", categoryDescription: "Learn how simple, kind words can brighten someone’s day and build stronger connections with others.")
                                 .frame(maxWidth: .infinity)
@@ -41,7 +40,7 @@ struct StoryView: View {
                         }
                         
                         NavigationLink {
-                            ComplimentView()
+                            GivingComplimentsView()
                         } label: {
                             StoryCategoryView(imageUrl: "compliment-logo", categoryTitle: "Giving Compliments", categoryDescription: "Learn how simple, kind words can brighten someone’s day and build stronger connections with others.")
                                 .frame(maxWidth: .infinity)
@@ -49,7 +48,7 @@ struct StoryView: View {
                         }
                         
                         NavigationLink {
-                            ComplimentView()
+                            GivingComplimentsView()
                         } label: {
                             StoryCategoryView(imageUrl: "compliment-logo", categoryTitle: "Giving Compliments", categoryDescription: "Learn how simple, kind words can brighten someone’s day and build stronger connections with others.")
                                 .frame(maxWidth: .infinity)

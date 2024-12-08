@@ -26,7 +26,7 @@ struct StoryCategoryView: View {
             .padding(16)
             .background(Color.white)
             .cornerRadius(8)
-
+            
         }
         .padding(8)
         .foregroundStyle(.black)
