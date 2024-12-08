@@ -17,6 +17,11 @@ struct ReflectionScreenView: View {
                 .multilineTextAlignment(.center)
                 .padding()
             
+            Image(imageUrl)
+                .resizable()
+                .scaledToFill()
+                .frame(width: 300, height: 300)
+            
             if let isCorrectAnswer = isCorrectAnswer {
                 if isCorrectAnswer {
                     Text(correctAnswerText)
@@ -31,31 +36,23 @@ struct ReflectionScreenView: View {
                 }
             }
             
-            Image(imageUrl)
-                .resizable()
-                .scaledToFill()
-                .frame(width: 300, height: 300)
-            
-            HStack {
+            HStack (alignment: .center, spacing: 16){
                 if let isCorrectAnswer = isCorrectAnswer {
                     if isCorrectAnswer {
-                        NavigationLink(destination: StoryView()) {
-                            Text("Go to Story")
-                                .padding()
-                                .background(Colors.customOrange)
-                                .foregroundStyle(.white)
-                                .cornerRadius(10)
-                        }
+                        StoryBackNavigationView()
                     }
                 }
                 
-                
-                Button(action: onRepeatButtonTapped) {
-                    Text("Repeat")
-                        .padding()
-                        .background(Colors.customOrange)
+                Button {
+                    onRepeatButtonTapped()
+                } label: {
+                    Image(systemName: "repeat")
+                        .resizable()
+                        .padding(16)
+                        .frame(width: 72, height: 72)
                         .foregroundStyle(.white)
-                        .cornerRadius(10)
+                        .background(Colors.customOrange.opacity(0.8))
+                        .clipShape(Circle())
                 }
             }
             .padding(.top, 20)

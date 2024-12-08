@@ -1,17 +1,17 @@
 import SwiftUI
 
-struct MenuBackNavigationView: View {
+struct StoryBackNavigationView: View {
     var body: some View {
         VStack {
             NavigationLink {
-                MenuView()
+                StoryView()
             } label: {
-                Image(systemName: "house.fill")
+                Image(systemName: "return")
                     .resizable()
                     .padding(16)
                     .frame(width: 72, height: 72)
-                    .foregroundStyle(.black)
-                    .background(Colors.customYellow.opacity(0.8))
+                    .foregroundStyle(.white)
+                    .background(Colors.customOrange.opacity(0.8))
                     .clipShape(Circle())
 
             }
