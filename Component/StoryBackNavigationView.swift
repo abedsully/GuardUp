@@ -6,7 +6,7 @@ struct StoryBackNavigationView: View {
             NavigationLink {
                 StoryView()
             } label: {
-                Image(systemName: "return")
+                Image(systemName: "return.right")
                     .resizable()
                     .padding(16)
                     .frame(width: 72, height: 72)

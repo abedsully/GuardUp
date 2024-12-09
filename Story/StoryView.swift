@@ -31,21 +31,23 @@ struct StoryView: View {
                                 .padding(.horizontal, 36)
                         }
                         
+                        
                         NavigationLink {
-                            GivingComplimentsView()
+                            ProvidingSupportView()
                         } label: {
-                            StoryCategoryView(imageUrl: "compliment-logo", categoryTitle: "Giving Compliments", categoryDescription: "Learn how simple, kind words can brighten someone’s day and build stronger connections with others.")
+                            StoryCategoryView(imageUrl: "support-logo", categoryTitle: "Providing Support", categoryDescription: "Learn how to boost someone's confidence and brighten their day by offering geuine support.")
                                 .frame(maxWidth: .infinity)
                                 .padding(.horizontal, 36)
                         }
                         
                         NavigationLink {
-                            GivingComplimentsView()
+                            ShowingSympathyView()
                         } label: {
-                            StoryCategoryView(imageUrl: "compliment-logo", categoryTitle: "Giving Compliments", categoryDescription: "Learn how simple, kind words can brighten someone’s day and build stronger connections with others.")
+                            StoryCategoryView(imageUrl: "sympathy-logo", categoryTitle: "Showing Sympathy", categoryDescription: "Learn the power of showing sympathy by understanding others' feelings and perspectives.")
                                 .frame(maxWidth: .infinity)
                                 .padding(.horizontal, 36)
                         }
+                        
                         
                         NavigationLink {
                             GivingComplimentsView()

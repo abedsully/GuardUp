@@ -21,7 +21,7 @@ struct StoryFlowView: View {
                     Image(imageUrl)
                         .resizable()
                         .scaledToFill()
-                        .frame(width: UIScreen.main.bounds.width * 0.7, height: 500)
+                        .frame(width: UIScreen.main.bounds.width * 0.7, height: UIScreen.main.bounds.height * 0.6)
                         .clipShape(RoundedRectangle(cornerRadius: 16))
                 }
                 .padding(.vertical, 16)

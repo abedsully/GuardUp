@@ -23,25 +23,13 @@ struct ReflectionScreenView: View {
                 .frame(width: 300, height: 300)
             
             if let isCorrectAnswer = isCorrectAnswer {
-                if isCorrectAnswer {
-                    Text(correctAnswerText)
-                        .font(.body)
-                        .multilineTextAlignment(.center)
-                        .padding(.horizontal)
-                } else {
-                    Text(incorrectAnswerText)
-                        .font(.body)
-                        .multilineTextAlignment(.center)
-                        .padding(.horizontal)
-                }
+                Text(isCorrectAnswer ? correctAnswerText : incorrectAnswerText)
+                    .font(.title3)
+                    .multilineTextAlignment(.center)
+                    .padding(.horizontal)
             }
             
             HStack (alignment: .center, spacing: 16){
-                if let isCorrectAnswer = isCorrectAnswer {
-                    if isCorrectAnswer {
-                        StoryBackNavigationView()
-                    }
-                }
                 
                 Button {
                     onRepeatButtonTapped()
@@ -53,6 +41,12 @@ struct ReflectionScreenView: View {
                         .foregroundStyle(.white)
                         .background(Colors.customOrange.opacity(0.8))
                         .clipShape(Circle())
+                }
+                
+                if let isCorrectAnswer = isCorrectAnswer {
+                    if isCorrectAnswer {
+                        StoryBackNavigationView()
+                    }
                 }
             }
             .padding(.top, 20)
