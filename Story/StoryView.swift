@@ -50,9 +50,9 @@ struct StoryView: View {
                         
                         
                         NavigationLink {
-                            GivingComplimentsView()
+                            RecognizingBullyingView()
                         } label: {
-                            StoryCategoryView(imageUrl: "compliment-logo", categoryTitle: "Giving Compliments", categoryDescription: "Learn how simple, kind words can brighten someone’s day and build stronger connections with others.")
+                            StoryCategoryView(imageUrl: "recognizing-bullying-logo", categoryTitle: "Recognizing Bullying", categoryDescription: "Learn how to identify the signs of bullying—whether it's verbal, physical, or emotional —and taking necessary steps to support those affected.")
                                 .frame(maxWidth: .infinity)
                                 .padding(.horizontal, 36)
                         }
