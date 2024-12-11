@@ -1,24 +1,22 @@
 import SwiftUI
 
-struct GivingComplimentsView: View {
+struct ProvidingSupportView: View {
     @State private var currentStoryIndex = 0
     @State private var selectedAnswer: String? = nil
     @State private var isCorrectAnswer: Bool? = nil
     @State private var showReflection = false
     
-    private var stories: [StoryConstant] {
+    private var stories: [Story] {
         [
-            StoryConstant(text: "Devano (blue-hair boy), a friendly and outgoing student, notices Mario (red-hair boy) sitting alone on a bench, absorbed in his phone and looking withdrawn. Feeling like a compliment could brighten his day, Devano decides to approach him.", image: "compliment-story-1"),
+            Story(text: "Devano opens his smartphone in his leisure times. He notices there are 2 new messages in his Messages App and decides to open it", image: "support-story-1"),
             
-            StoryConstant(text: "Devano takes a deep breath and decides to say something ...", image: "compliment-story-2"),
+            Story(text: "Oohh, It's from Mario. Devano reads the messages and watches Mario's vlog ...", image: "support-story-2"),
             
-            StoryConstant(text: "How should Devano start the conversation?", image: "compliment-story-1", answers: ["Hey, Mario, I love your smile, it really brightens the room!", "You're always lonely. Shame on you!"], trueAnswer: "Hey, Mario, I love your smile, it really brightens the room!"),
+            Story(text: "How should Devano react to the message?", image: "support-story-3", answers: ["Yo, this vlog is so good, it’s like you’re a natural-born star 😜", "I've seen more excitement in a tutorial on how to fold socks—seriously, where’s the energy? 😬"], trueAnswer: "Yo, this vlog is so good, it’s like you’re a natural-born star 😜"),
             
-            StoryConstant(image: isCorrectAnswer == true ? "compliment-story-3-true" : "compliment-story-3-false"),
+            Story(image: isCorrectAnswer == true ? "support-story-4-true" : "support-story-4-false"),
             
-            StoryConstant(text: isCorrectAnswer == true ? "Mario looks up, surprised, but then smiles. He seems to relax a bit, sitting up straighter, and makes eye contact with Devano." : "Mario flinches at Devano’s words, visibly uncomfortable.", image: isCorrectAnswer == true ? "compliment-story-4-true" : "compliment-story-4-false"),
-            
-            StoryConstant(text: isCorrectAnswer == true ? "Devano and Mario continue talking for a few minutes. Mario seems comfortable now, and the mood has lightened." : "Mario feels sad and immediately gets away from the room", image: isCorrectAnswer == true ? "compliment-story-5-true" : "compliment-story-5-false")
+            Story(text: isCorrectAnswer == true ? "Mario is happy and he is even more excited to vlog again..." : "Mario seems sad and unappreciated", image: isCorrectAnswer == true ? "support-story-5-true" : "support-story-5-false"),
         ]
     }
     
@@ -28,6 +26,7 @@ struct GivingComplimentsView: View {
                 Colors.customYellow
                     .opacity(0.6)
                     .ignoresSafeArea()
+
                 
                 VStack {
                     if showReflection {
@@ -36,7 +35,7 @@ struct GivingComplimentsView: View {
                             selectedAnswer = nil
                             isCorrectAnswer = nil
                             showReflection = false
-                        }, correctTitleText: "Great job! You made Mario feel appreciated", incorrectTitleText: "Oh no! Mario didn’t feel great about what you said earlier", correctAnswerText: "Your compliments and sympathy helped create a positive connection. Small gestures like this can make a big difference in someone's day!", incorrectAnswerText: "It seems like your words didn’t have the best effect. Even if you didn’t mean to, negative comments can make someone feel worse or even push them away. Think about how your words can make others feel next time.", imageUrl: isCorrectAnswer == true ? "compliment-reflection-true" : "compliment-reflection-false")
+                        }, correctTitleText: "Awesome, you successfully make Mario feels supported", incorrectTitleText: "You fail, Mario feels miserable and unconfident about his vlogs", correctAnswerText: "Your support can make a huge difference in someone's life. By showing care and encouragement, you help build their confidence and motivation to succeed, just like Mario. A little support can go a long way in helping someone overcome doubts and pursue their goals.", incorrectAnswerText: "Without sympathy, people can feel isolated and misunderstood. Mario, like anyone, may struggle to cope with challenges without knowing others care. A small gesture of compassion can make a big difference in helping them feel seen and supported during tough times.", imageUrl: isCorrectAnswer == true ? "compliment-reflection-true" : "compliment-reflection-false")
                     } else {
                         StoryFlowView(
                             guideText: stories[currentStoryIndex].text,

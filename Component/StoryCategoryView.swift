@@ -12,6 +12,7 @@ struct StoryCategoryView: View {
                     .resizable()
                     .scaledToFit()
                     .frame(height: 120)
+                    .clipShape(RoundedRectangle(cornerRadius: 8))
                 
                 VStack(alignment: .leading, spacing: 16) {
                     Text(categoryTitle)

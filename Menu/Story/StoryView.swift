@@ -43,16 +43,15 @@ struct StoryView: View {
                         NavigationLink {
                             ShowingSympathyView()
                         } label: {
-                            StoryCategoryView(imageUrl: "sympathy-logo", categoryTitle: "Showing Sympathy", categoryDescription: "Learn the power of showing sympathy by understanding others' feelings and perspectives.")
+                            StoryCategoryView(imageUrl: "sympathy-logo", categoryTitle: "Showing Sympathy", categoryDescription: "Learn how to show sympathy of others by understanding their feelings and perspectives.")
                                 .frame(maxWidth: .infinity)
                                 .padding(.horizontal, 36)
                         }
                         
-                        
                         NavigationLink {
                             RecognizingBullyingView()
                         } label: {
-                            StoryCategoryView(imageUrl: "recognizing-bullying-logo", categoryTitle: "Recognizing Bullying", categoryDescription: "Learn how to identify the signs of bullying—whether it's verbal, physical, or emotional —and taking necessary steps to support those affected.")
+                            StoryCategoryView(imageUrl: "recognizing-bullying-logo", categoryTitle: "Recognizing Bullying", categoryDescription: "Learn how to identify the signs of bullying (verbal or non-verbal) and taking necessary steps to support those affected.")
                                 .frame(maxWidth: .infinity)
                                 .padding(.horizontal, 36)
                         }
@@ -64,7 +63,7 @@ struct StoryView: View {
                         NavigationLink {
                             MenuView()
                         } label: {
-                            MenuBackNavigationView()
+                            MenuBackNavigationView(color: Colors.customYellow)
                         }
                     }
                 }

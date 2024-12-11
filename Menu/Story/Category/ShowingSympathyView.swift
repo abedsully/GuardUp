@@ -6,15 +6,15 @@ struct ShowingSympathyView: View {
     @State private var isCorrectAnswer: Bool? = nil
     @State private var showReflection = false
     
-    private var stories: [StoryConstant] {
+    private var stories: [Story] {
         [
-            StoryConstant(text: "Devano sees Mario standing outside his house, looking overwhelmed. He notices the flood damage and the sadness in Mario’s eyes.", image: "sympathy-story-1"),
+            Story(text: "Devano sees Mario standing outside his house, looking overwhelmed. He notices the flood damage and the sadness in Mario’s eyes.", image: "sympathy-story-1"),
             
-            StoryConstant(text: "Devano gets closer Mario and decides to say something ...", image: "sympathy-story-2", answers: ["You’re not alone, Mario. I’m here for you, whenever you need.", "It’s just a house, Mario. Don't even worry about it"], trueAnswer: "You’re not alone, Mario. I’m here for you, whenever you need."),
+            Story(text: "Devano gets closer Mario and decides to say something ...", image: "sympathy-story-2", answers: ["You’re not alone, Mario. I’m here for you, whenever you need.", "It’s just a house, Mario. Don't even worry about it"], trueAnswer: "You’re not alone, Mario. I’m here for you, whenever you need."),
             
-            StoryConstant(image: isCorrectAnswer == true ? "sympathy-story-3-true" : "sympathy-story-3-false"),
+            Story(image: isCorrectAnswer == true ? "sympathy-story-3-true" : "sympathy-story-3-false"),
             
-            StoryConstant(text: isCorrectAnswer == true ? "Mario feels comforted and not as alone. He’s grateful for Devano’s sympathy." : "Mario feels dismissed and even more isolated. He wished Devano understood more.", image: isCorrectAnswer == true ? "sympathy-story-4-true" : "sympathy-story-4-false"),
+            Story(text: isCorrectAnswer == true ? "Mario feels comforted and not as alone. He’s grateful for Devano’s sympathy." : "Mario feels dismissed and even more isolated. He wished Devano understood more.", image: isCorrectAnswer == true ? "sympathy-story-4-true" : "sympathy-story-4-false"),
             
         ]
     }

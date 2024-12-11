@@ -7,29 +7,29 @@ struct RecognizingBullyingView: View {
     @State private var isCorrectAnswer: Bool? = nil
     @State private var showReflection = false
     
-    private var stories: [StoryConstant] {
+    private var stories: [Story] {
         [
-            StoryConstant(text: "Devano notices Mario standing alone in the cafeteria, looking down. Devano overhears some students laughing and pointing at Mario, and he starts to wonder if Mario is being teased.", image: "recognizing-story-1"),
+            Story(text: "Devano notices Mario standing alone in the cafeteria, looking down. Devano overhears some students laughing and pointing at Mario, and he starts to wonder if Mario is being teased.", image: "recognizing-story-1"),
             
-            StoryConstant(text: "Devano approaches Mario, who quickly looks up, but Devano notices that Mario looks uncomfortable. The group of students is still laughing nearby.", image: "recognizing-story-2", answers: [
+            Story(text: "Devano approaches Mario, who quickly looks up, but Devano notices that Mario looks uncomfortable. The group of students is still laughing nearby.", image: "recognizing-story-2", answers: [
                 "Ask Mario if he is okay and needs to be accompanied",
                 "Ignore the situation and continue with his day."
             ], trueAnswer: "Ask Mario if he is okay and needs to be accompanied"),
             
-            StoryConstant(image: isCorrectFlow == true ? "recognizing-story-3-true" : "recognizing-story-3-false"),
+            Story(image: isCorrectFlow == true ? "recognizing-story-3-true" : "recognizing-story-3-false"),
             
-            StoryConstant(text: isCorrectFlow == true ?
+            Story(text: isCorrectFlow == true ?
                 "Mario opens up to Devano, sharing that he feels humiliated by the students laughing at him. Devano offers his support, making Mario feel less isolated." :
                 "Mario feels even more self-conscious after Devano ignores the situation, and the group continues to make fun of him. He feels even more alone.", image: isCorrectFlow == true ? "recognizing-story-4-true" : "recognizing-story-4-false"),
             
-            StoryConstant(text: "Devano realizes that Mario is a victim of bullying. He wonders what steps he can take to help. What should he do next?", image: isCorrectFlow == true ? "recognizing-story-5-true" : "recognizing-story-4-false", answers: [
+            Story(text: "Devano realizes that Mario is a victim of bullying. He wonders what steps he can take to help. What should he do next?", image: isCorrectFlow == true ? "recognizing-story-5-true" : "recognizing-story-4-false", answers: [
                 "Talk to a teacher or counselor about the bullying.",
                 "Tell Mario to just ignore the students and carry on."
             ], trueAnswer: "Talk to a teacher or counselor about the bullying."),
             
-            StoryConstant(image: isCorrectAnswer == true ? "recognizing-story-6-true" : "recognizing-story-6-false"),
+            Story(image: isCorrectAnswer == true ? "recognizing-story-6-true" : "recognizing-story-6-false"),
             
-            StoryConstant(text: isCorrectAnswer == true ?
+            Story(text: isCorrectAnswer == true ?
                 "Devano talks to a teacher about what he’s noticed, and they work together to address the bullying. Mario feels relieved, and the bullying stops. Devano feels proud of taking action." :
                 "Mario continues to suffer in silence as the bullying escalates. Devano regrets not doing more and wishes he’d taken action sooner.", image: isCorrectAnswer == true ? "recognizing-story-7-true" : "recognizing-story-7-false")
         ]

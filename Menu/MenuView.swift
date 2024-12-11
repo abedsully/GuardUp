@@ -1,5 +1,4 @@
 import SwiftUI
-import CoreData
 
 struct MenuView: View {
     var body: some View {
@@ -49,14 +48,12 @@ struct MenuView: View {
                         
                         
                         NavigationLink {
-                            StoryView()
+                            ChallengeView()
                         } label: {
-                            Image("story-button")
+                            Image("challenge-button")
                                 .resizable()
                                 .scaledToFit()
                                 .frame(height: UIScreen.main.bounds.height * 0.1)
-                            
-                            
                         }
                         
                         
