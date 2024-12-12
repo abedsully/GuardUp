@@ -24,6 +24,7 @@ struct MenuView: View {
                     Spacer()
                     
                     VStack (alignment: .center, spacing: 40){
+                        
                         NavigationLink {
                             StoryView()
                         } label: {
@@ -31,8 +32,6 @@ struct MenuView: View {
                                 .resizable()
                                 .scaledToFit()
                                 .frame(height: UIScreen.main.bounds.height * 0.1)
-                            
-                            
                         }
                         
                         NavigationLink {
@@ -42,10 +41,7 @@ struct MenuView: View {
                                 .resizable()
                                 .scaledToFit()
                                 .frame(height: UIScreen.main.bounds.height * 0.1)
-                            
-                            
                         }
-                        
                         
                         NavigationLink {
                             ChallengeView()
@@ -56,7 +52,6 @@ struct MenuView: View {
                                 .frame(height: UIScreen.main.bounds.height * 0.1)
                         }
                         
-                        
                         NavigationLink {
                             StoryView()
                         } label: {
@@ -64,8 +59,6 @@ struct MenuView: View {
                                 .resizable()
                                 .scaledToFit()
                                 .frame(height: UIScreen.main.bounds.height * 0.1)
-                            
-                            
                         }
                     }
                     Spacer()
@@ -74,6 +67,6 @@ struct MenuView: View {
         }
         .navigationViewStyle(.stack)
         .navigationBarBackButtonHidden(true)
-        
     }
 }
+

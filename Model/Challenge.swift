@@ -1,6 +1,8 @@
 struct Challenge: Identifiable, Hashable {
-    var id: Int
-    var imageUrl: String
-    var titleText: String
-    var detail: String
+    let id: Int
+    let imageUrl: String
+    let imageUrlLocked: String
+    let titleText: String
+    let detail: String
+    var isAvailable: Bool
 }

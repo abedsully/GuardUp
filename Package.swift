@@ -16,6 +16,7 @@ let package = Package(
         .iOSApplication(
             name: "Guard Up",
             targets: ["AppModule"],
+            teamIdentifier: "H268PUBW7D",
             displayVersion: "1.0",
             bundleVersion: "1",
             appIcon: .asset("AppIcon"),
