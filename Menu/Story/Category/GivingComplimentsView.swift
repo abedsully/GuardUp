@@ -70,6 +70,9 @@ struct GivingComplimentsView: View {
         }
         .navigationViewStyle(.stack)
         .navigationBarBackButtonHidden(true)
+        .onAppear {
+            MediaPlayer.shared.stopOngoingMusic()
+        }
     }
     
     private func checkAnswerAndMoveNext() {

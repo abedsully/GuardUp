@@ -32,16 +32,20 @@ struct MenuView: View {
                                 .resizable()
                                 .scaledToFit()
                                 .frame(height: UIScreen.main.bounds.height * 0.1)
-                        }
+                        }.simultaneousGesture(TapGesture().onEnded {
+                            MediaPlayer.shared.playSoundEffect(forFileName: "mixkit_click", forFormatIn: "wav", vol: 3)
+                        })
                         
                         NavigationLink {
-                            StoryView()
+                            QuizView()
                         } label: {
                             Image("quiz-button")
                                 .resizable()
                                 .scaledToFit()
                                 .frame(height: UIScreen.main.bounds.height * 0.1)
-                        }
+                        }.simultaneousGesture(TapGesture().onEnded {
+                            MediaPlayer.shared.playSoundEffect(forFileName: "mixkit_click", forFormatIn: "wav", vol: 3)
+                        })
                         
                         NavigationLink {
                             ChallengeView()
@@ -50,7 +54,10 @@ struct MenuView: View {
                                 .resizable()
                                 .scaledToFit()
                                 .frame(height: UIScreen.main.bounds.height * 0.1)
-                        }
+                        }.simultaneousGesture(TapGesture().onEnded {
+                            MediaPlayer.shared.playSoundEffect(forFileName: "mixkit_click", forFormatIn: "wav", vol: 3)
+                        })
+                        
                         
                         NavigationLink {
                             StoryView()
@@ -59,7 +66,9 @@ struct MenuView: View {
                                 .resizable()
                                 .scaledToFit()
                                 .frame(height: UIScreen.main.bounds.height * 0.1)
-                        }
+                        }.simultaneousGesture(TapGesture().onEnded {
+                            MediaPlayer.shared.playSoundEffect(forFileName: "mixkit_click", forFormatIn: "wav", vol: 3)
+                        })
                     }
                     Spacer()
                 }
@@ -67,6 +76,9 @@ struct MenuView: View {
         }
         .navigationViewStyle(.stack)
         .navigationBarBackButtonHidden(true)
+        .onAppear(perform: {
+            MediaPlayer.shared.playMusic(forFileName: "introduction_music", forFormatIn: "mp3", vol: 1)
+        })
     }
 }
 

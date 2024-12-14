@@ -54,5 +54,8 @@ struct ReflectionScreenView: View {
         .padding(24)
         .background(Colors.customYellow.opacity(0.8), in: RoundedRectangle(cornerRadius: 20))
         .padding(36)
+        .onAppear {
+            MediaPlayer.shared.playSoundEffect(forFileName: isCorrectAnswer == true ? "winning" : "losing", forFormatIn: "wav", vol: 2)
+        }
     }
 }

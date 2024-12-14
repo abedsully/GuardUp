@@ -35,6 +35,7 @@ struct ChallengeDetailView: View {
                 Button {
                     isFinished.toggle()
                     viewModel.markChallengeAsCompleted(id: challenge.id)
+                    MediaPlayer.shared.playSoundEffect(forFileName: "challenge_completed", forFormatIn: "wav", vol: 2)
                     dismiss()
                 } label: {
                     Image("checklist-button")
