@@ -96,6 +96,9 @@ struct RecognizingBullyingView: View {
         }
         .navigationViewStyle(.stack)
         .navigationBarBackButtonHidden(true)
+        .onAppear {
+            MediaPlayer.shared.playMusic(forFileName: "story-detail-music", forFormatIn: "mp3", vol: 1)
+        }
     }
     
     private func checkAnswerAndMoveNext() {

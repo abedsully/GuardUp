@@ -71,7 +71,7 @@ struct GivingComplimentsView: View {
         .navigationViewStyle(.stack)
         .navigationBarBackButtonHidden(true)
         .onAppear {
-            MediaPlayer.shared.stopOngoingMusic()
+            MediaPlayer.shared.playMusic(forFileName: "story-detail-music", forFormatIn: "mp3", vol: 1)
         }
     }
     
