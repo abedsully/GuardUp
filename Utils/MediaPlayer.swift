@@ -40,10 +40,16 @@ class MediaPlayer: ObservableObject {
         if synthesizer.isSpeaking {
             synthesizer.stopSpeaking(at: .immediate)
         }
-
+        
         let utterance = AVSpeechUtterance(string: sound)
         utterance.voice = AVSpeechSynthesisVoice(language: "en-UK")
         
         synthesizer.speak(utterance)
+    }
+    
+    func stopSpeaking() {
+        if synthesizer.isSpeaking {
+            synthesizer.stopSpeaking(at: .immediate)
+        }
     }
 }

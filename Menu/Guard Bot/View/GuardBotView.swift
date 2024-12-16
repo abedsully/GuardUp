@@ -50,7 +50,7 @@ struct GuardBotView: View {
                         Image(systemName: "paperplane.fill")
                             .foregroundStyle(.white)
                             .padding()
-                            .background(Color.blue)
+                            .background(Colors.customOrange)
                             .cornerRadius(20)
                             .padding(.leading, 10)
                     }
@@ -61,38 +61,33 @@ struct GuardBotView: View {
             .background(Color.white)
             .toolbar {
                 ToolbarItem(placement: .principal) {
-                    VStack {
+                    VStack (alignment: .center){
                         CircularGuardBotProfileView(profileImageString: "guard-bot-image", size: .large)
+                        
+                        Text("Guard Bot")
+                            .font(.title3)
+                            .fontWeight(.medium)
+                            .foregroundStyle(.black)
                     }
-                    .padding(.top, 48)
+                    .padding(.top, 24)
                 }
-                
-                ToolbarItem(placement: .topBarLeading) {
-                    Button {
-                        dismiss()
-                        viewModel.chatMessages.removeAll()
-                    } label: {
-                        Image("close-button")
-                            .resizable()
-                            .scaledToFit()
-                            .frame(width: 36, height: 36)
-                            .foregroundColor(.white)
-                            .padding(.top, 48)
-                    }
-                    
-                }
-                
             }
-            .toolbarColorScheme(.dark, for: .navigationBar)
-            .toolbarBackground(.visible, for: .navigationBar)
+            .toolbarColorScheme(.light, for: .navigationBar)
+            .toolbarBackground(.visible , for: .navigationBar)
         }
         .navigationViewStyle(.stack)
-        .navigationBarBackButtonHidden()
         .onAppear {
             MediaPlayer.shared.stopOngoingMusic()
             DispatchQueue.main.async {
                 viewModel.chatMessages.append(Message(text: initialMessage, isFromUser: false))
                 viewModel.mediaPlayer.speak(sound: initialMessage)
+            }
+        }
+        .onDisappear {
+            DispatchQueue.main.async {
+                viewModel.mediaPlayer.stopSpeaking()
+                MediaPlayer.shared.playMusic(forFileName: "introduction_music", forFormatIn: "mp3", vol: 1)
+                viewModel.chatMessages.removeAll()
             }
         }
     }

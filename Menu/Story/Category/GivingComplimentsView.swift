@@ -38,7 +38,7 @@ struct GivingComplimentsView: View {
                             selectedAnswer = nil
                             isCorrectAnswer = nil
                             showReflection = false
-                        }, correctTitleText: "Great job! You made Mario feel appreciated", incorrectTitleText: "Oh no! Mario didn’t feel great about what you said earlier", correctAnswerText: "Your compliments and sympathy helped create a positive connection. Small gestures like this can make a big difference in someone's day!", incorrectAnswerText: "It seems like your words didn’t have the best effect. Even if you didn’t mean to, negative comments can make someone feel worse or even push them away. Think about how your words can make others feel next time.", imageUrl: isCorrectAnswer == true ? "compliment-reflection-true" : "compliment-reflection-false")
+                        }, correctTitleText: "Great job! You made Mario feel appreciated", incorrectTitleText: "Oh no! Mario didn’t feel great about what you said earlier", correctAnswerText: "Your compliments and sympathy helped create a positive connection. Small gestures like this can make a big difference in someone's day!", incorrectAnswerText: "It seems like your words didn’t have the best effect. Even if you didn’t mean to, negative comments can make someone feel worse or even push them away. Think about how your words can make others feel next time.", imageUrl: isCorrectAnswer == true ? "compliment-reflection-true" : "compliment-reflection-false", mediaPlayer: mediaPlayer)
                     } else {
                         StoryFlowView(
                             guideText: stories[currentStoryIndex].text,

@@ -36,7 +36,7 @@ struct StoryFlowView: View {
                         }) {
                             HStack {
                                 Text(answer)
-                                    .foregroundColor(.white)
+                                    .foregroundStyle(.white)
                                     .padding()
                                     .background(
                                         Colors.customOrange

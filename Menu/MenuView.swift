@@ -76,7 +76,6 @@ struct MenuView: View {
         }
         .navigationBarBackButtonHidden(true)
         .onAppear(perform: {
-            MediaPlayer.shared.stopOngoingMusic()
             MediaPlayer.shared.playMusic(forFileName: "introduction_music", forFormatIn: "mp3", vol: 1)
         })
     }

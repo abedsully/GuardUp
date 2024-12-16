@@ -1,6 +1,8 @@
 import SwiftUI
 
 struct StoryBackNavigationView: View {
+    @ObservedObject var mediaPlayer = MediaPlayer()
+    
     var body: some View {
         VStack {
             NavigationLink {
@@ -13,8 +15,9 @@ struct StoryBackNavigationView: View {
                     .foregroundStyle(.white)
                     .background(Colors.customOrange.opacity(0.8))
                     .clipShape(Circle())
-
-            }
+            }.simultaneousGesture(TapGesture().onEnded {
+                mediaPlayer.stopSpeaking()
+            })
         }
         .padding(.vertical, 36)
     }
