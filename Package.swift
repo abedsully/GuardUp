@@ -30,7 +30,8 @@ let package = Package(
                 .landscapeRight,
                 .landscapeLeft,
                 .portraitUpsideDown(.when(deviceFamilies: [.pad]))
-            ]
+            ],
+            appCategory: .education
         )
     ],
     targets: [
@@ -38,7 +39,8 @@ let package = Package(
             name: "AppModule",
             path: ".",
             resources: [
-                .process("Resources")
+                .process("Audio"),
+                .copy("Resources/MentalHealthSentimentAnalysis.mlmodelc")
             ],
             swiftSettings: [
                 .enableUpcomingFeature("BareSlashRegexLiterals")

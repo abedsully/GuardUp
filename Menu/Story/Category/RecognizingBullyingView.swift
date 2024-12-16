@@ -7,6 +7,8 @@ struct RecognizingBullyingView: View {
     @State private var isCorrectAnswer: Bool? = nil
     @State private var showReflection = false
     
+    @StateObject private var mediaPlayer = MediaPlayer()
+    
     private var stories: [Story] {
         [
             Story(text: "Devano notices Mario standing alone in the cafeteria, looking down. Devano overhears some students laughing and pointing at Mario, and he starts to wonder if Mario is being teased.", image: "recognizing-story-1"),
@@ -97,7 +99,15 @@ struct RecognizingBullyingView: View {
         .navigationViewStyle(.stack)
         .navigationBarBackButtonHidden(true)
         .onAppear {
-            MediaPlayer.shared.playMusic(forFileName: "story-detail-music", forFormatIn: "mp3", vol: 1)
+            MediaPlayer.shared.stopOngoingMusic()
+            if let storyText = stories[currentStoryIndex].text {
+                mediaPlayer.speak(sound: storyText)
+            }
+        }
+        .onChange(of: currentStoryIndex) { oldValue, newValue in
+            if let storyText = stories[currentStoryIndex].text {
+                mediaPlayer.speak(sound: storyText)
+            }
         }
     }
     

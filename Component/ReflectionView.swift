@@ -8,6 +8,7 @@ struct ReflectionScreenView: View {
     var correctAnswerText: String
     var incorrectAnswerText: String
     var imageUrl: String
+    @StateObject private var mediaPlayer = MediaPlayer()
     
     var body: some View {
         VStack(spacing: 20) {
@@ -56,6 +57,11 @@ struct ReflectionScreenView: View {
         .padding(36)
         .onAppear {
             MediaPlayer.shared.playSoundEffect(forFileName: isCorrectAnswer == true ? "winning" : "losing", forFormatIn: "wav", vol: 2)
+            mediaPlayer.speak(sound: "\(isCorrectAnswer == true ? correctTitleText : incorrectTitleText)")
+            
+            DispatchQueue.main.asyncAfter(deadline: .now() + 4.0) {
+                mediaPlayer.speak(sound: "\(isCorrectAnswer == true ? correctAnswerText : incorrectAnswerText)")
+            }
         }
     }
 }

@@ -1,35 +1,49 @@
 import AVFoundation
+import SwiftUI
 
-class MediaPlayer {
+class MediaPlayer: ObservableObject {
     static let shared = MediaPlayer()
-    var player: AVAudioPlayer?
-    var player2: AVAudioPlayer?
+    var musicPlayer: AVAudioPlayer?
+    var soundEffectPlayer: AVAudioPlayer?
+    @State private var speechSynthesizer: AVSpeechSynthesizer?
+    private var synthesizer = AVSpeechSynthesizer()
     
     func playMusic(forFileName filename: String, forFormatIn format: String, vol: Float) {
         guard let url = Bundle.main.url(forResource: filename, withExtension: format) else { return }
         do {
-            player = try AVAudioPlayer(contentsOf: url)
-            player?.numberOfLoops = -1
-            player?.volume = vol
-            player?.play()
+            musicPlayer = try AVAudioPlayer(contentsOf: url)
+            musicPlayer?.numberOfLoops = -1
+            musicPlayer?.volume = vol
+            musicPlayer?.play()
         } catch {
             print("Error playing sound: \(error.localizedDescription)")
         }
     }
     
     func stopOngoingMusic() {
-        guard let bgmPlayer = player else { return }
+        guard let bgmPlayer = musicPlayer else { return }
         bgmPlayer.stop()
     }
     
     func playSoundEffect(forFileName soundEffectFileName: String, forFormatIn format: String, vol: Float) {
         guard let url = Bundle.main.url(forResource: soundEffectFileName, withExtension: format) else { return }
         do {
-            player2 = try AVAudioPlayer(contentsOf: url)
-            player2?.volume = vol
-            player2?.play()
+            soundEffectPlayer = try AVAudioPlayer(contentsOf: url)
+            soundEffectPlayer?.volume = vol
+            soundEffectPlayer?.play()
         } catch {
             print("Error playing sound: \(error.localizedDescription)")
         }
+    }
+    
+    func speak(sound: String) {
+        if synthesizer.isSpeaking {
+            synthesizer.stopSpeaking(at: .immediate)
+        }
+
+        let utterance = AVSpeechUtterance(string: sound)
+        utterance.voice = AVSpeechSynthesisVoice(language: "en-UK")
+        
+        synthesizer.speak(utterance)
     }
 }

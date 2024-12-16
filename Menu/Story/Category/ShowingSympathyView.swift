@@ -6,16 +6,17 @@ struct ShowingSympathyView: View {
     @State private var isCorrectAnswer: Bool? = nil
     @State private var showReflection = false
     
+    @StateObject private var mediaPlayer = MediaPlayer()
+    
     private var stories: [Story] {
         [
             Story(text: "Devano sees Mario standing outside his house, looking overwhelmed. He notices the flood damage and the sadness in Mario’s eyes.", image: "sympathy-story-1"),
             
-            Story(text: "Devano gets closer Mario and decides to say something ...", image: "sympathy-story-2", answers: ["You’re not alone, Mario. I’m here for you, whenever you need.", "It’s just a house, Mario. Don't even worry about it"], trueAnswer: "You’re not alone, Mario. I’m here for you, whenever you need."),
+            Story(text: "Devano gets closer to Mario and decides to say something ...", image: "sympathy-story-2", answers: ["You’re not alone, Mario. I’m here for you, whenever you need.", "It’s just a house, Mario. Don't even worry about it"], trueAnswer: "You’re not alone, Mario. I’m here for you, whenever you need."),
             
             Story(image: isCorrectAnswer == true ? "sympathy-story-3-true" : "sympathy-story-3-false"),
             
             Story(text: isCorrectAnswer == true ? "Mario feels comforted and not as alone. He’s grateful for Devano’s sympathy." : "Mario feels dismissed and even more isolated. He wished Devano understood more.", image: isCorrectAnswer == true ? "sympathy-story-4-true" : "sympathy-story-4-false"),
-            
         ]
     }
     
@@ -43,7 +44,7 @@ struct ShowingSympathyView: View {
                             incorrectAnswerText: "Sympathy is an important first step in showing that you care. It allows you to acknowledge someone’s pain and offer comfort. However, it’s important to be mindful of how we express sympathy—simply feeling sorry for someone can sometimes feel distant or passive. To make your sympathy more impactful, try to offer support in ways that show you’re there for them, like offering help or a listening ear.",
                             imageUrl: isCorrectAnswer == true ? "compliment-reflection-true" : "compliment-reflection-false"
                         )
-
+                        
                     } else {
                         StoryFlowView(
                             guideText: stories[currentStoryIndex].text,
@@ -78,7 +79,15 @@ struct ShowingSympathyView: View {
         .navigationViewStyle(.stack)
         .navigationBarBackButtonHidden(true)
         .onAppear {
-            MediaPlayer.shared.playMusic(forFileName: "story-detail-music", forFormatIn: "mp3", vol: 1)
+            MediaPlayer.shared.stopOngoingMusic()
+            if let storyText = stories[currentStoryIndex].text {
+                mediaPlayer.speak(sound: storyText)
+            }
+        }
+        .onChange(of: currentStoryIndex) { oldValue, newValue in
+            if let storyText = stories[currentStoryIndex].text {
+                mediaPlayer.speak(sound: storyText)
+            }
         }
     }
     

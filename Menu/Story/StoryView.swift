@@ -1,8 +1,10 @@
 import SwiftUI
 
 struct StoryView: View {
+    @StateObject private var mediaPlayer = MediaPlayer()
+    
     var body: some View {
-        NavigationView {
+        NavigationStack {
             ZStack {
                 Image("story-background")
                     .resizable()
@@ -30,7 +32,7 @@ struct StoryView: View {
                                 .frame(maxWidth: .infinity)
                                 .padding(.horizontal, 36)
                         }.simultaneousGesture(TapGesture().onEnded {
-                            MediaPlayer.shared.playSoundEffect(forFileName: "mixkit_click", forFormatIn: "wav", vol: 3)
+                            MediaPlayer.shared.playSoundEffect(forFileName: "click-sound-effect", forFormatIn: "wav", vol: 3)
                         })
                         
                         
@@ -41,7 +43,7 @@ struct StoryView: View {
                                 .frame(maxWidth: .infinity)
                                 .padding(.horizontal, 36)
                         }.simultaneousGesture(TapGesture().onEnded {
-                            MediaPlayer.shared.playSoundEffect(forFileName: "mixkit_click", forFormatIn: "wav", vol: 3)
+                            MediaPlayer.shared.playSoundEffect(forFileName: "click-sound-effect", forFormatIn: "wav", vol: 3)
                         })
                         
                         NavigationLink {
@@ -51,7 +53,7 @@ struct StoryView: View {
                                 .frame(maxWidth: .infinity)
                                 .padding(.horizontal, 36)
                         }.simultaneousGesture(TapGesture().onEnded {
-                            MediaPlayer.shared.playSoundEffect(forFileName: "mixkit_click", forFormatIn: "wav", vol: 3)
+                            MediaPlayer.shared.playSoundEffect(forFileName: "click-sound-effect", forFormatIn: "wav", vol: 3)
                         })
                         NavigationLink {
                             RecognizingBullyingView()
@@ -60,7 +62,7 @@ struct StoryView: View {
                                 .frame(maxWidth: .infinity)
                                 .padding(.horizontal, 36)
                         }.simultaneousGesture(TapGesture().onEnded {
-                            MediaPlayer.shared.playSoundEffect(forFileName: "mixkit_click", forFormatIn: "wav", vol: 3)
+                            MediaPlayer.shared.playSoundEffect(forFileName: "click-sound-effect", forFormatIn: "wav", vol: 3)
                         })
                     }
                     .padding(.top, 24)
@@ -82,6 +84,7 @@ struct StoryView: View {
         .navigationBarBackButtonHidden(true)
         .onAppear {
             MediaPlayer.shared.playMusic(forFileName: "story-music", forFormatIn: "mp3", vol: 1)
+            mediaPlayer.speak(sound: "")
         }
     }
 }

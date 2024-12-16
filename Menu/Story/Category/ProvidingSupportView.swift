@@ -6,6 +6,8 @@ struct ProvidingSupportView: View {
     @State private var isCorrectAnswer: Bool? = nil
     @State private var showReflection = false
     
+    @StateObject private var mediaPlayer = MediaPlayer()
+    
     private var stories: [Story] {
         [
             Story(text: "Devano opens his smartphone in his leisure times. He notices there are 2 new messages in his Messages App and decides to open it", image: "support-story-1"),
@@ -70,7 +72,15 @@ struct ProvidingSupportView: View {
         .navigationViewStyle(.stack)
         .navigationBarBackButtonHidden(true)
         .onAppear {
-            MediaPlayer.shared.playMusic(forFileName: "story-detail-music", forFormatIn: "mp3", vol: 1)
+            MediaPlayer.shared.stopOngoingMusic()
+            if let storyText = stories[currentStoryIndex].text {
+                mediaPlayer.speak(sound: storyText)
+            }
+        }
+        .onChange(of: currentStoryIndex) { oldValue, newValue in
+            if let storyText = stories[currentStoryIndex].text {
+                mediaPlayer.speak(sound: storyText)
+            }
         }
     }
     

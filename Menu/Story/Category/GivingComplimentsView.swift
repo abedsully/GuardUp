@@ -6,6 +6,8 @@ struct GivingComplimentsView: View {
     @State private var isCorrectAnswer: Bool? = nil
     @State private var showReflection = false
     
+    @StateObject private var mediaPlayer = MediaPlayer()
+    
     private var stories: [Story] {
         [
             Story(text: "Devano (blue-hair boy), a friendly and outgoing student, notices Mario (red-hair boy) sitting alone on a bench, absorbed in his phone and looking withdrawn. Feeling like a compliment could brighten his day, Devano decides to approach him.", image: "compliment-story-1"),
@@ -60,18 +62,29 @@ struct GivingComplimentsView: View {
             .onChange(of: selectedAnswer) { oldValue, newValue in
                 if newValue != nil {
                     checkAnswerAndMoveNext()
+                    MediaPlayer.shared.playSoundEffect(forFileName: "click-sound-effect", forFormatIn: "wav", vol: 3)
                 }
             }
-            .onTapGesture {
+            .simultaneousGesture(TapGesture().onEnded {
                 if selectedAnswer != nil || stories[currentStoryIndex].answers == nil {
+                    MediaPlayer.shared.playSoundEffect(forFileName: "click-sound-effect", forFormatIn: "wav", vol: 3)
                     checkAnswerAndMoveNext()
                 }
-            }
+            })
         }
         .navigationViewStyle(.stack)
         .navigationBarBackButtonHidden(true)
         .onAppear {
-            MediaPlayer.shared.playMusic(forFileName: "story-detail-music", forFormatIn: "mp3", vol: 1)
+            MediaPlayer.shared.stopOngoingMusic()
+            if let storyText = stories[currentStoryIndex].text {
+                mediaPlayer.speak(sound: storyText)
+            }
+            
+        }
+        .onChange(of: currentStoryIndex) { oldValue, newValue in
+            if let storyText = stories[currentStoryIndex].text {
+                mediaPlayer.speak(sound: storyText)
+            }
         }
     }
     

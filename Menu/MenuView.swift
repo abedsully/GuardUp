@@ -2,7 +2,7 @@ import SwiftUI
 
 struct MenuView: View {
     var body: some View {
-        NavigationView {
+        NavigationStack {
             ZStack {
                 Image("menu-background")
                     .resizable()
@@ -33,7 +33,7 @@ struct MenuView: View {
                                 .scaledToFit()
                                 .frame(height: UIScreen.main.bounds.height * 0.1)
                         }.simultaneousGesture(TapGesture().onEnded {
-                            MediaPlayer.shared.playSoundEffect(forFileName: "mixkit_click", forFormatIn: "wav", vol: 3)
+                            MediaPlayer.shared.playSoundEffect(forFileName: "click-sound-effect", forFormatIn: "wav", vol: 3)
                         })
                         
                         NavigationLink {
@@ -44,7 +44,7 @@ struct MenuView: View {
                                 .scaledToFit()
                                 .frame(height: UIScreen.main.bounds.height * 0.1)
                         }.simultaneousGesture(TapGesture().onEnded {
-                            MediaPlayer.shared.playSoundEffect(forFileName: "mixkit_click", forFormatIn: "wav", vol: 3)
+                            MediaPlayer.shared.playSoundEffect(forFileName: "click-sound-effect", forFormatIn: "wav", vol: 3)
                         })
                         
                         NavigationLink {
@@ -55,28 +55,28 @@ struct MenuView: View {
                                 .scaledToFit()
                                 .frame(height: UIScreen.main.bounds.height * 0.1)
                         }.simultaneousGesture(TapGesture().onEnded {
-                            MediaPlayer.shared.playSoundEffect(forFileName: "mixkit_click", forFormatIn: "wav", vol: 3)
+                            MediaPlayer.shared.playSoundEffect(forFileName: "click-sound-effect", forFormatIn: "wav", vol: 3)
                         })
                         
                         
                         NavigationLink {
-                            StoryView()
+                            GuardBotView()
                         } label: {
-                            Image("story-button")
+                            Image("guard-bot-button")
                                 .resizable()
                                 .scaledToFit()
                                 .frame(height: UIScreen.main.bounds.height * 0.1)
                         }.simultaneousGesture(TapGesture().onEnded {
-                            MediaPlayer.shared.playSoundEffect(forFileName: "mixkit_click", forFormatIn: "wav", vol: 3)
+                            MediaPlayer.shared.playSoundEffect(forFileName: "click-sound-effect", forFormatIn: "wav", vol: 3)
                         })
                     }
                     Spacer()
                 }
             }
         }
-        .navigationViewStyle(.stack)
         .navigationBarBackButtonHidden(true)
         .onAppear(perform: {
+            MediaPlayer.shared.stopOngoingMusic()
             MediaPlayer.shared.playMusic(forFileName: "introduction_music", forFormatIn: "mp3", vol: 1)
         })
     }
