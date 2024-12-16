@@ -42,7 +42,8 @@ struct ShowingSympathyView: View {
                             incorrectTitleText: "Oops! That response missed the mark.",
                             correctAnswerText: "Sympathy involves deeply understanding and sharing the feelings of another person. It's about connecting with them emotionally and offering support in meaningful ways. Keep practicing sympathy, and you’ll build stronger, more supportive relationships.",
                             incorrectAnswerText: "Sympathy is an important first step in showing that you care. It allows you to acknowledge someone’s pain and offer comfort. However, it’s important to be mindful of how we express sympathy—simply feeling sorry for someone can sometimes feel distant or passive. To make your sympathy more impactful, try to offer support in ways that show you’re there for them, like offering help or a listening ear.",
-                            imageUrl: isCorrectAnswer == true ? "compliment-reflection-true" : "compliment-reflection-false"
+                            imageUrl: isCorrectAnswer == true ? "compliment-reflection-true" : "compliment-reflection-false",
+                            mediaPlayer: mediaPlayer
                         )
                         
                     } else {
@@ -68,13 +69,15 @@ struct ShowingSympathyView: View {
             .onChange(of: selectedAnswer) { oldValue, newValue in
                 if newValue != nil {
                     checkAnswerAndMoveNext()
+                    MediaPlayer.shared.playSoundEffect(forFileName: "click-sound-effect", forFormatIn: "wav", vol: 3)
                 }
             }
-            .onTapGesture {
+            .simultaneousGesture(TapGesture().onEnded {
                 if selectedAnswer != nil || stories[currentStoryIndex].answers == nil {
+                    MediaPlayer.shared.playSoundEffect(forFileName: "click-sound-effect", forFormatIn: "wav", vol: 3)
                     checkAnswerAndMoveNext()
                 }
-            }
+            })
         }
         .navigationViewStyle(.stack)
         .navigationBarBackButtonHidden(true)

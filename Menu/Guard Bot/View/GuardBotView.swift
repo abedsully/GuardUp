@@ -56,7 +56,7 @@ struct GuardBotView: View {
                     }
                     .buttonStyle(PlainButtonStyle())
                 }
-                .padding(.horizontal)
+                .padding()
             }
             .background(Color.white)
             .toolbar {
@@ -86,8 +86,8 @@ struct GuardBotView: View {
         .onDisappear {
             DispatchQueue.main.async {
                 viewModel.mediaPlayer.stopSpeaking()
-                MediaPlayer.shared.playMusic(forFileName: "introduction_music", forFormatIn: "mp3", vol: 1)
                 viewModel.chatMessages.removeAll()
+                MediaPlayer.shared.playMusic(forFileName: "introduction_music", forFormatIn: "mp3", vol: 1)
             }
         }
     }

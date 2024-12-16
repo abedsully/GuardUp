@@ -58,11 +58,12 @@ struct RecognizingBullyingView: View {
                                 isCorrectAnswer = nil
                                 showReflection = false
                             },
-                            correctTitleText: "Great job, you helped Mario feel seen and supported!",
+                            correctTitleText: "Great job, you helped Mario feel seen and supported.",
                             incorrectTitleText: "Oops, Mario feels more isolated now.",
                             correctAnswerText: "By recognizing the signs of bullying and taking action, you showed Mario that someone cares. Your support can break the cycle of isolation and help him feel safe. You took the first step in standing up for what’s right, which is crucial in stopping bullying and making others feel valued.",
                             incorrectAnswerText: "Ignoring bullying can cause people to feel even more alone and rejected. Mario may now feel that no one cares, and the bullying could escalate. It’s important to intervene and speak out against bullying—your actions have the power to make a real difference in someone’s life.",
-                            imageUrl: isCorrectAnswer == true ? "compliment-reflection-true" : "compliment-reflection-false"
+                            imageUrl: isCorrectAnswer == true ? "compliment-reflection-true" : "compliment-reflection-false",
+                            mediaPlayer: mediaPlayer
                         )
 
                     } else {
@@ -88,13 +89,15 @@ struct RecognizingBullyingView: View {
             .onChange(of: selectedAnswer) { oldValue, newValue in
                 if newValue != nil {
                     checkAnswerAndMoveNext()
+                    MediaPlayer.shared.playSoundEffect(forFileName: "click-sound-effect", forFormatIn: "wav", vol: 3)
                 }
             }
-            .onTapGesture {
+            .simultaneousGesture(TapGesture().onEnded {
                 if selectedAnswer != nil || stories[currentStoryIndex].answers == nil {
+                    MediaPlayer.shared.playSoundEffect(forFileName: "click-sound-effect", forFormatIn: "wav", vol: 3)
                     checkAnswerAndMoveNext()
                 }
-            }
+            })
         }
         .navigationViewStyle(.stack)
         .navigationBarBackButtonHidden(true)

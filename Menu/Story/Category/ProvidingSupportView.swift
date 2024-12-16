@@ -37,7 +37,7 @@ struct ProvidingSupportView: View {
                             selectedAnswer = nil
                             isCorrectAnswer = nil
                             showReflection = false
-                        }, correctTitleText: "Awesome, you successfully make Mario feels supported", incorrectTitleText: "You fail, Mario feels miserable and unconfident about his vlogs", correctAnswerText: "Your support can make a huge difference in someone's life. By showing care and encouragement, you help build their confidence and motivation to succeed, just like Mario. A little support can go a long way in helping someone overcome doubts and pursue their goals.", incorrectAnswerText: "Without sympathy, people can feel isolated and misunderstood. Mario, like anyone, may struggle to cope with challenges without knowing others care. A small gesture of compassion can make a big difference in helping them feel seen and supported during tough times.", imageUrl: isCorrectAnswer == true ? "compliment-reflection-true" : "compliment-reflection-false")
+                        }, correctTitleText: "Awesome, you successfully make Mario feels supported.", incorrectTitleText: "You fail, Mario feels miserable and unconfident about his vlogs", correctAnswerText: "Your support can make a huge difference in someone's life. By showing care and encouragement, you help build their confidence and motivation to succeed, just like Mario. A little support can go a long way in helping someone overcome doubts and pursue their goals.", incorrectAnswerText: "Without sympathy, people can feel isolated and misunderstood. Mario, like anyone, may struggle to cope with challenges without knowing others care. A small gesture of compassion can make a big difference in helping them feel seen and supported during tough times.", imageUrl: isCorrectAnswer == true ? "compliment-reflection-true" : "compliment-reflection-false", mediaPlayer: mediaPlayer)
                     } else {
                         StoryFlowView(
                             guideText: stories[currentStoryIndex].text,
@@ -61,13 +61,15 @@ struct ProvidingSupportView: View {
             .onChange(of: selectedAnswer) { oldValue, newValue in
                 if newValue != nil {
                     checkAnswerAndMoveNext()
+                    MediaPlayer.shared.playSoundEffect(forFileName: "click-sound-effect", forFormatIn: "wav", vol: 3)
                 }
             }
-            .onTapGesture {
+            .simultaneousGesture(TapGesture().onEnded {
                 if selectedAnswer != nil || stories[currentStoryIndex].answers == nil {
+                    MediaPlayer.shared.playSoundEffect(forFileName: "click-sound-effect", forFormatIn: "wav", vol: 3)
                     checkAnswerAndMoveNext()
                 }
-            }
+            })
         }
         .navigationViewStyle(.stack)
         .navigationBarBackButtonHidden(true)

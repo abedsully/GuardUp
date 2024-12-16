@@ -21,7 +21,6 @@ class ChallengeViewModel: ObservableObject {
     }
     
     
-    
     func markChallengeAsCompleted(id: Int) {
         if let index = challenges.firstIndex(where: { $0.id == id }) {
             challenges[index].isAvailable = true

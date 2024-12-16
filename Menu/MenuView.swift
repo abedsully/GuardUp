@@ -35,17 +35,7 @@ struct MenuView: View {
                         }.simultaneousGesture(TapGesture().onEnded {
                             MediaPlayer.shared.playSoundEffect(forFileName: "click-sound-effect", forFormatIn: "wav", vol: 3)
                         })
-                        
-                        NavigationLink {
-                            QuizView()
-                        } label: {
-                            Image("quiz-button")
-                                .resizable()
-                                .scaledToFit()
-                                .frame(height: UIScreen.main.bounds.height * 0.1)
-                        }.simultaneousGesture(TapGesture().onEnded {
-                            MediaPlayer.shared.playSoundEffect(forFileName: "click-sound-effect", forFormatIn: "wav", vol: 3)
-                        })
+
                         
                         NavigationLink {
                             ChallengeView()
@@ -63,6 +53,17 @@ struct MenuView: View {
                             GuardBotView()
                         } label: {
                             Image("guard-bot-button")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(height: UIScreen.main.bounds.height * 0.1)
+                        }.simultaneousGesture(TapGesture().onEnded {
+                            MediaPlayer.shared.playSoundEffect(forFileName: "click-sound-effect", forFormatIn: "wav", vol: 3)
+                        })
+                        
+                        NavigationLink {
+                            QuizView()
+                        } label: {
+                            Image("quiz-button")
                                 .resizable()
                                 .scaledToFit()
                                 .frame(height: UIScreen.main.bounds.height * 0.1)

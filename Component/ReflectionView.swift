@@ -31,7 +31,6 @@ struct ReflectionScreenView: View {
             }
             
             HStack (alignment: .center, spacing: 16){
-                
                 Button {
                     onRepeatButtonTapped()
                 } label: {
@@ -57,7 +56,6 @@ struct ReflectionScreenView: View {
         .padding(36)
         .onAppear {
             mediaPlayer.stopSpeaking()
-            
             MediaPlayer.shared.playSoundEffect(forFileName: isCorrectAnswer == true ? "winning" : "losing", forFormatIn: "wav", vol: 2)
             mediaPlayer.speak(sound: "\(isCorrectAnswer == true ? correctTitleText : incorrectTitleText) \(isCorrectAnswer == true ? correctAnswerText : incorrectAnswerText)")
         }
