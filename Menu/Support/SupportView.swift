@@ -25,52 +25,69 @@ struct SupportView: View {
                     Spacer()
                     
                     HStack (alignment: .center, spacing: 32) {
-                        VStack (alignment: .center, spacing: 8){
-                            Image("journal-logo")
-                                .resizable()
-                                .scaledToFill()
-                                .frame(width: 200, height: 200)
-                            
-                            Text("My Journal")
-                                .foregroundStyle(.black)
-                                .font(.title2)
-                                .fontWeight(.medium)
-                        }
-                        .padding()
-                        .background(.white)
-                        .clipShape(RoundedRectangle(cornerRadius: 16))
                         
-                        VStack (alignment: .center, spacing: 8){
-                            Image("resource-logo")
-                                .resizable()
-                                .scaledToFill()
-                                .frame(width: 200, height: 200)
-                            
-                            Text("Resources")
-                                .foregroundStyle(.black)
-                                .font(.title2)
-                                .fontWeight(.medium)
+                        NavigationLink {
+                            JournalView()
+                        } label: {
+                            VStack (alignment: .center, spacing: 16){
+                                Image("journal-logo")
+                                    .resizable()
+                                    .scaledToFill()
+                                    .frame(width: 200, height: 200)
+                                    .clipShape(RoundedRectangle(cornerRadius: 8))
+                                
+                                Text("My Journal")
+                                    .foregroundStyle(.black)
+                                    .font(.title2)
+                                    .fontWeight(.medium)
+                            }
+                            .padding(24)
+                            .background(.white)
+                            .clipShape(RoundedRectangle(cornerRadius: 16))
                         }
-                        .padding()
-                        .background(.white)
-                        .clipShape(RoundedRectangle(cornerRadius: 16))
+                        
+                        NavigationLink {
+                            ResourcesView()
+                        } label: {
+                            VStack (alignment: .center, spacing: 16){
+                                Image("resource-logo")
+                                    .resizable()
+                                    .scaledToFill()
+                                    .frame(width: 200, height: 200)
+                                    .clipShape(RoundedRectangle(cornerRadius: 8))
+                                
+                                Text("Resources")
+                                    .foregroundStyle(.black)
+                                    .font(.title2)
+                                    .fontWeight(.medium)
+                            }
+                            .padding(24)
+                            .background(.white)
+                            .clipShape(RoundedRectangle(cornerRadius: 16))
+                        }
                     }
                     .padding(.vertical, 24)
                     
-                    VStack (alignment: .center, spacing: 8){
-                        Image("journal-logo")
-                            .resizable()
-                            .scaledToFill()
-                            .frame(width: 200, height: 200)
-                        
-                        Text("My Journal")
-                            .foregroundStyle(.black)
-                            .font(.title2)
-                            .fontWeight(.medium)
+                    NavigationLink {
+                        EmotionRecognitionView()
+                    } label: {
+                        VStack (alignment: .center, spacing: 16){
+                            Image("emotion-recognition-logo")
+                                .resizable()
+                                .scaledToFill()
+                                .frame(width: 200, height: 200)
+                                .clipShape(RoundedRectangle(cornerRadius: 8))
+                            
+                            Text("Emotion Recognition")
+                                .foregroundStyle(.black)
+                                .font(.title2)
+                                .fontWeight(.medium)
+                        }
+                        .padding(24)
+                        .background(.white)
+                        .clipShape(RoundedRectangle(cornerRadius: 16))
                     }
-                    .padding()
-                    .background(.white)
-                    .clipShape(RoundedRectangle(cornerRadius: 16))
+                
                     
                     Spacer()
                     
@@ -82,7 +99,7 @@ struct SupportView: View {
                         }
                     }
                 }
-
+                
             }
             
         }
