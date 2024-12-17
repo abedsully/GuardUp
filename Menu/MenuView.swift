@@ -61,9 +61,9 @@ struct MenuView: View {
                         })
                         
                         NavigationLink {
-                            QuizView()
+                            GetHelpView()
                         } label: {
-                            Image("quiz-button")
+                            Image("get-help-button")
                                 .resizable()
                                 .scaledToFit()
                                 .frame(height: UIScreen.main.bounds.height * 0.1)

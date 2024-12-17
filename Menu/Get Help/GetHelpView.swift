@@ -1,14 +1,13 @@
 import SwiftUI
 
-struct QuizView: View {
+struct GetHelpView: View {
     var body: some View {
         NavigationView {
             VStack {
-                Text("Quiz View")
+                Text("Get Help View")
             }
         }
         .navigationViewStyle(.stack)
-        .navigationBarBackButtonHidden()
     }
 }
 
