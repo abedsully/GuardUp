@@ -40,7 +40,8 @@ let package = Package(
             path: ".",
             resources: [
                 .process("Audio"),
-                .copy("Resources/MentalHealthSentimentAnalysis.mlmodelc")
+                .copy("Resources/GuardBotClassifier.mlmodelc"),
+                .copy("Emotion/EmotionRecognition.mlmodelc")
             ],
             swiftSettings: [
                 .enableUpcomingFeature("BareSlashRegexLiterals")

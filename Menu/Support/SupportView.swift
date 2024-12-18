@@ -68,27 +68,8 @@ struct SupportView: View {
                     }
                     .padding(.vertical, 24)
                     
-                    NavigationLink {
-                        EmotionRecognitionView()
-                    } label: {
-                        VStack (alignment: .center, spacing: 16){
-                            Image("emotion-recognition-logo")
-                                .resizable()
-                                .scaledToFill()
-                                .frame(width: 200, height: 200)
-                                .clipShape(RoundedRectangle(cornerRadius: 8))
-                            
-                            Text("Emotion Recognition")
-                                .foregroundStyle(.black)
-                                .font(.title2)
-                                .fontWeight(.medium)
-                        }
-                        .padding(24)
-                        .background(.white)
-                        .clipShape(RoundedRectangle(cornerRadius: 16))
-                    }
-                
-                    
+                    Spacer()
+          
                     Spacer()
                     
                     VStack {
@@ -106,7 +87,9 @@ struct SupportView: View {
         .navigationViewStyle(.stack)
         .navigationBarBackButtonHidden()
         .onAppear {
+
             MediaPlayer.shared.stopOngoingMusic()
+
         }
     }
 }

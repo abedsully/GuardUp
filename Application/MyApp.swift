@@ -8,6 +8,7 @@ struct MyApp: App {
         WindowGroup {
             MenuView()
                 .environmentObject(viewModel)
+                .modelContainer(for: [JournalEntry.self])
         }
     }
 }
