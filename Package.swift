@@ -41,7 +41,7 @@ let package = Package(
             resources: [
                 .process("Audio"),
                 .copy("Resources/GuardBotClassifier.mlmodelc"),
-                .copy("Emotion/EmotionRecognition.mlmodelc")
+                .copy("Resources/EmotionRecognition.mlmodelc")
             ],
             swiftSettings: [
                 .enableUpcomingFeature("BareSlashRegexLiterals")

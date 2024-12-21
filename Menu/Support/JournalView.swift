@@ -4,25 +4,31 @@ import SwiftData
 struct JournalView: View {
     @Environment(\.modelContext) private var context
     @Query private var entries: [JournalEntry]
-    
+
     @State private var isPresentingInputView: Bool = false
-    
+
+    private let columns = [
+        GridItem(.flexible()),
+        GridItem(.flexible()),
+        GridItem(.flexible()),
+    ]
+
     var body: some View {
         NavigationView {
             VStack {
-                List {
+                LazyVGrid(columns: columns) {
                     ForEach(entries) { entry in
                         VStack(alignment: .leading) {
-                            Text(entry.title)
-                                .font(.title2)
-                            Text(entry.content)
-                                .font(.headline)
-                                .foregroundColor(.secondary)
+                            if let uiImage = UIImage(data: entry.image) {
+                                JournalComponentView(
+                                    journalTitle: entry.title,
+                                    journalContent: entry.content,
+                                    journalImage: uiImage
+                                )
+                            }
                         }
                     }
-                    .onDelete(perform: deleteEntry)
                 }
-                .listStyle(.plain)
             }
             .navigationTitle("My Journal")
             .toolbar {
@@ -39,11 +45,5 @@ struct JournalView: View {
             JournalInputView(isPresenting: $isPresentingInputView)
         }
         .navigationViewStyle(.stack)
-    }
-    
-    private func deleteEntry(at offsets: IndexSet) {
-        for index in offsets {
-            context.delete(entries[index])
-        }
     }
 }
