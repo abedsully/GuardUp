@@ -2,10 +2,11 @@ import SwiftData
 import SwiftUI
 
 @Model
-class JournalEntry {
+class JournalEntry: Identifiable {
     @Attribute var title: String
     @Attribute var content: String
     @Attribute var image: Data
+    @Attribute var date: Date = Date()
 
     init(title: String, content: String, image: Data) {
         self.title = title

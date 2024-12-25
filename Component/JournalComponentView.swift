@@ -3,29 +3,26 @@ import SwiftUI
 struct JournalComponentView: View {
     var journalTitle: String
     var journalContent: String
-    var journalImage: UIImage
-    
+    var journalDate: Date
+
     var body: some View {
-        HStack(alignment: .top, spacing: 16) {
-            Image(uiImage: journalImage)
-                .resizable()
-                .scaledToFit()
-                .frame(width: 100, height: 100)
-                .cornerRadius(8)
+        VStack(alignment: .leading, spacing: 8) {
+            Text(journalTitle)
+                .font(.title2)
+                .lineLimit(1)
             
-            VStack(alignment: .leading, spacing: 16) {
-                Text(journalTitle)
-                    .font(.headline)
-                    .fontWeight(.semibold)
-                Text(journalContent)
-                    .font(.subheadline)
-                    .multilineTextAlignment(.leading)
-            }
-            .frame(maxWidth: .infinity, alignment: .leading)
+            Text(journalContent)
+                .font(.body)
+                .lineLimit(3)
+                .foregroundColor(.secondary)
+            
+            Text(journalDate, style: .date)
+                .font(.caption)
+                .foregroundColor(.gray)
         }
-        .padding(16)
-        .background(Color.cyan)
-        .foregroundStyle(.black)
-        .cornerRadius(8)
+        .padding()
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .background(Color.white.opacity(0.1))
+        .cornerRadius(10)
     }
 }
