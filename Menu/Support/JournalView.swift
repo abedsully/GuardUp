@@ -60,11 +60,7 @@ struct JournalView: View {
                     .padding(36)
                     
                     VStack {
-                        NavigationLink {
-                            GuardBotView()
-                        } label: {
-                            MenuBackNavigationView(color: Colors.customGreen)
-                        }
+                        SupportBackNavigationView(color: Colors.customGreen)
                     }
                 }
                 .scrollIndicators(.never)

@@ -20,12 +20,12 @@ struct JournalComponentView: View {
                         .font(.title3)
                         .lineLimit(1)
                         .fontWeight(.semibold)
-                        .foregroundColor(.black)
+                        .foregroundStyle(.black)
                     
                     Text(journalContent)
                         .font(.body)
                         .fontWeight(.medium)
-                        .foregroundColor(.gray)
+                        .foregroundStyle(.gray)
                         .lineLimit(3)
                         .multilineTextAlignment(.leading)
                         .padding(.top, 8)
@@ -36,7 +36,7 @@ struct JournalComponentView: View {
             VStack(alignment: .trailing) {
                 Text(journalDate, style: .date)
                     .font(.body)
-                    .foregroundColor(.gray)
+                    .foregroundStyle(.gray)
             }
             .frame(maxWidth: .infinity, alignment: .trailing)
         }

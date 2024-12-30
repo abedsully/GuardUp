@@ -3,27 +3,23 @@ import SwiftUI
 struct ResourcesView: View {
     let resources: [Resource] = [
         Resource(title: "Emergency",
-                 image: "close-button",
+                 image: "emergency-resources-logo",
                  callCenter: "911",
-                 textLine: nil,
                  helpLine: "Contact local law enforcement, fire department, or medical services.",
                  website: "https://www.fema.gov"),
         Resource(title: "School Bullying",
-                 image: "close-button",
+                 image: "schoolbullying-resources-logo",
                  callCenter: "952-838-9000",
-                 textLine: nil,
                  helpLine: "PACER Center for addressing bullying in schools.",
                  website: "https://www.stopbullying.gov"),
         Resource(title: "Depressed",
-                 image: "close-button",
+                 image: "depression-resources-logo",
                  callCenter: "988",
-                 textLine: "Text HOME to 741741",
                  helpLine: "Crisis Text Line and Suicide Prevention Lifeline.",
                  website: "https://www.samhsa.gov"),
         Resource(title: "Cyberbullying",
-                 image: "close-button",
+                 image: "cyberbullying-resources-logo",
                  callCenter: "1-800-843-5678",
-                 textLine: nil,
                  helpLine: "CyberTipline at the National Center for Missing and Exploited Children.",
                  website: "https://www.cyberbullying.org")
     ]
@@ -41,6 +37,7 @@ struct ResourcesView: View {
                     .opacity(0.6)
                 
                 ScrollView {
+                    Spacer()
                     
                     Image("resources-menu-logo")
                         .resizable()
@@ -49,26 +46,17 @@ struct ResourcesView: View {
                     
                     VStack(spacing: 24) {
                         ForEach(resources, id: \.title) { resource in
-                            ResourcesComponentView(resourcesTitle: resource.title,
-                                                   resourcesImage: resource.image,
-                                                   callCenter: resource.callCenter,
-                                                   textLine: resource.textLine,
-                                                   helpLine: resource.helpLine,
-                                                   website: resource.website)
+                            ResourcesComponentView(resource: resource)
                         }
                     }
                     .padding(.top)
                     .frame(maxWidth: .infinity, alignment: .center)
                     
                     VStack {
-                        NavigationLink {
-                            SupportView()
-                        } label: {
-                            MenuBackNavigationView(color: Colors.customGreen)
-                        }
+                        SupportBackNavigationView(color: Colors.customGreen)
                     }
                 }
-                .padding(.horizontal, 48)
+                .padding(.horizontal, 72)
                 .scrollIndicators(.never)
             }
         }

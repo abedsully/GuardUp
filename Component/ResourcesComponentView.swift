@@ -1,62 +1,41 @@
 import SwiftUI
 
-struct Resource {
-    let title: String
-    let image: String
-    let callCenter: String
-    let textLine: String?
-    let helpLine: String
-    let website: String
-}
-
 struct ResourcesComponentView: View {
-    var resourcesTitle: String
-    var resourcesImage: String
-    var callCenter: String
-    var textLine: String?
-    var helpLine: String
-    var website: String
+    var resource: Resource
     
     var body: some View {
         VStack(alignment: .leading, spacing: 12) {
-            HStack(alignment: .top, spacing: 16) {
-                Image(resourcesImage)
+            HStack(alignment: .center, spacing: 16) {
+                Image(resource.image)
                     .resizable()
                     .scaledToFill()
                     .frame(width: 80, height: 80)
-                    .clipShape(RoundedRectangle(cornerRadius: 8))
                 
-                Text(resourcesTitle)
-                    .font(.headline)
+                Text(resource.title)
+                    .font(.title3)
                     .fontWeight(.bold)
-                    .foregroundColor(.black)
+                    .foregroundStyle(.black)
             }
             
-            VStack(alignment: .leading, spacing: 8) {
-                Text("📞 Call Center: \(callCenter)")
+            VStack(alignment: .leading, spacing: 12) {
+                Text("📞 Call Center: \(resource.callCenter)")
                     .font(.body)
-                    .foregroundColor(.gray)
+                    .foregroundStyle(.gray)
                 
-                if let text = textLine {
-                    Text("✉️ Text Line: \(text)")
-                        .font(.body)
-                        .foregroundColor(.gray)
-                }
-                
-                Text("☎️ Help Line: \(helpLine)")
+                Text("☎️ Help Line: \(resource.helpLine)")
                     .font(.body)
-                    .foregroundColor(.gray)
+                    .foregroundStyle(.gray)
                 
-                Link("🌐 Website", destination: URL(string: website)!)
+                Link("🌐 Website", destination: URL(string: resource.website)!)
                     .font(.body)
-                    .foregroundColor(.blue)
+                    .foregroundStyle(.blue)
             }
         }
+        .frame(maxWidth: 500, alignment: .leading)
         .padding()
         .background(Color.white)
         .clipShape(RoundedRectangle(cornerRadius: 16))
         .shadow(radius: 2)
         .padding(.horizontal)
-        .frame(maxWidth: .infinity, alignment: .center)
     }
 }
