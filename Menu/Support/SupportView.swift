@@ -2,7 +2,7 @@ import SwiftUI
 
 struct SupportView: View {
     var body: some View {
-        NavigationView {
+        NavigationStack {
             ZStack {
                 Image("support-background")
                     .resizable()
@@ -69,7 +69,7 @@ struct SupportView: View {
                     .padding(.vertical, 24)
                     
                     Spacer()
-          
+                    
                     Spacer()
                     
                     VStack {
@@ -87,9 +87,7 @@ struct SupportView: View {
         .navigationViewStyle(.stack)
         .navigationBarBackButtonHidden()
         .onAppear {
-
             MediaPlayer.shared.stopOngoingMusic()
-
         }
     }
 }

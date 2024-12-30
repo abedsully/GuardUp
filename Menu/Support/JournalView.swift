@@ -7,13 +7,8 @@ struct JournalView: View {
     
     @State private var isPresentingInputView: Bool = false
     
-    private let columns = [
-        GridItem(.flexible()),
-        GridItem(.flexible())
-    ]
-    
     var body: some View {
-        NavigationView {
+        NavigationStack {
             ZStack {
                 Image("support-background")
                     .resizable()
@@ -25,36 +20,55 @@ struct JournalView: View {
                     .opacity(0.6)
                 
                 ScrollView {
+                    VStack {
+                        Button {
+                            isPresentingInputView.toggle()
+                        } label: {
+                            Image("plus-sign-button")
+                                .resizable()
+                                .scaledToFill()
+                                .frame(width: 50, height: 50)
+                        }
+                        .padding(.top, 32)
+                    }
+                    .frame(maxWidth: .infinity, alignment: .trailing)
+                    .padding(.trailing, 32)
+
+                    
                     Image("my-journal-logo")
                         .resizable()
                         .scaledToFit()
                         .frame(height: UIScreen.main.bounds.height * 0.25)
                     
-                    LazyVGrid(columns: columns, spacing: 16) {
+                    Spacer()
+                    
+                    LazyVStack(spacing: 24) {
                         ForEach(entries) { entry in
                             NavigationLink(destination: JournalDetailView(details: entry)) {
-                                JournalComponentView(
-                                    journalTitle: entry.title,
-                                    journalContent: entry.content,
-                                    journalDate: entry.date
-                                )
-                                .background(Color.white.opacity(0.1))
-                                .cornerRadius(10)
+                                if let uiImage = UIImage(data: entry.image) {
+                                    JournalComponentView(
+                                        journalTitle: entry.title,
+                                        journalImage: uiImage,
+                                        journalContent: entry.content,
+                                        journalDate: entry.date
+                                    )
+                                    .cornerRadius(10)
+                                }
                             }
                         }
                     }
-                    .padding(.horizontal, 16)
-                }
-                .padding(.horizontal, 64)
-                .toolbar {
-                    ToolbarItem(placement: .navigationBarTrailing) {
-                        Button(action: {
-                            isPresentingInputView = true
-                        }) {
-                            Image(systemName: "plus")
+                    .padding(36)
+                    
+                    VStack {
+                        NavigationLink {
+                            GuardBotView()
+                        } label: {
+                            MenuBackNavigationView(color: Colors.customGreen)
                         }
                     }
                 }
+                .scrollIndicators(.never)
+                .padding(.horizontal, 72)
             }
         }
         .sheet(isPresented: $isPresentingInputView) {
