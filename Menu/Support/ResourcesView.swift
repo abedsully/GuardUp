@@ -62,5 +62,8 @@ struct ResourcesView: View {
         }
         .navigationViewStyle(.stack)
         .navigationBarBackButtonHidden()
+        .onAppear {
+            MediaPlayer.shared.stopOngoingMusic()
+        }
     }
 }

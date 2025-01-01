@@ -44,7 +44,9 @@ struct SupportView: View {
                             .padding(24)
                             .background(.white)
                             .clipShape(RoundedRectangle(cornerRadius: 16))
-                        }
+                        }.simultaneousGesture(TapGesture().onEnded {
+                            MediaPlayer.shared.playSoundEffect(forFileName: "click-sound-effect", forFormatIn: "wav", vol: 3)
+                        })
                         
                         NavigationLink {
                             ResourcesView()
@@ -64,7 +66,9 @@ struct SupportView: View {
                             .padding(24)
                             .background(.white)
                             .clipShape(RoundedRectangle(cornerRadius: 16))
-                        }
+                        }.simultaneousGesture(TapGesture().onEnded {
+                            MediaPlayer.shared.playSoundEffect(forFileName: "click-sound-effect", forFormatIn: "wav", vol: 3)
+                        })
                     }
                     .padding(.vertical, 24)
                     
@@ -77,7 +81,9 @@ struct SupportView: View {
                             MenuView()
                         } label: {
                             MenuBackNavigationView(color: Colors.customGreen)
-                        }
+                        }.simultaneousGesture(TapGesture().onEnded {
+                            MediaPlayer.shared.playSoundEffect(forFileName: "click-sound-effect", forFormatIn: "wav", vol: 3)
+                        })
                     }
                 }
                 
@@ -87,7 +93,7 @@ struct SupportView: View {
         .navigationViewStyle(.stack)
         .navigationBarBackButtonHidden()
         .onAppear {
-            MediaPlayer.shared.stopOngoingMusic()
+            MediaPlayer.shared.playMusic(forFileName: "secondary_music", forFormatIn: "mp3", vol: 1)
         }
     }
 }

@@ -42,7 +42,7 @@ struct JournalComponentView: View {
         }
         .frame(maxWidth: .infinity, alignment: .leading)
         .padding()
-        .background(Color.white)
+        .background(.white.opacity(0.9))
         .clipShape(RoundedRectangle(cornerRadius: 16))
         .shadow(radius: 2)
     }

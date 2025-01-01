@@ -83,7 +83,7 @@ struct StoryView: View {
         .navigationViewStyle(.stack)
         .navigationBarBackButtonHidden(true)
         .onAppear {
-            MediaPlayer.shared.playMusic(forFileName: "story-music", forFormatIn: "mp3", vol: 1)
+            MediaPlayer.shared.playMusic(forFileName: "secondary_music", forFormatIn: "mp3", vol: 1)
         }
     }
 }

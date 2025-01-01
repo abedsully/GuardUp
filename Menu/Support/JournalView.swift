@@ -72,6 +72,9 @@ struct JournalView: View {
         }
         .navigationViewStyle(.stack)
         .navigationBarBackButtonHidden()
+        .onAppear {
+            MediaPlayer.shared.stopOngoingMusic()
+        }
     }
 }
 

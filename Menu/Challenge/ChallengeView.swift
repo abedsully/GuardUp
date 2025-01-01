@@ -89,7 +89,7 @@ struct ChallengeView: View {
         .navigationViewStyle(.stack)
         .navigationBarBackButtonHidden()
         .onAppear {
-            MediaPlayer.shared.playMusic(forFileName: "story-music", forFormatIn: "mp3", vol: 1)
+            MediaPlayer.shared.playMusic(forFileName: "secondary_music", forFormatIn: "mp3", vol: 1)
         }
     }
 }
