@@ -14,7 +14,7 @@ struct JournalDetailView: View {
                 Image(uiImage: uiImage)
                     .resizable()
                     .scaledToFit()
-                    .frame(maxWidth: 200, maxHeight: 200)
+                    .frame(maxWidth: 350, maxHeight: 350)
                     .cornerRadius(10)
                     .shadow(radius: 5)
             }
